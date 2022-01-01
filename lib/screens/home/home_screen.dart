@@ -47,7 +47,9 @@ class HomeScreen extends StatelessWidget {
           //home screen
           : Scaffold(
               appBar: AppBar(
-                title: customText(text: 'Home', fontWeight: FontWeight.bold),
+                title: customText(
+                    text: hp.homeTabsNames[hp.currentTab],
+                    fontWeight: FontWeight.bold),
               ),
               body: SingleChildScrollView(
                 child: hp.homeTabs[hp.currentTab],

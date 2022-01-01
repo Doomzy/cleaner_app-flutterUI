@@ -125,3 +125,130 @@ Widget cleanerOpsBtn({
         ),
       ),
     );
+
+Widget toolboxOptions({
+  required header,
+  required info,
+  required icon,
+  required context,
+  required screen,
+}) =>
+    InkWell(
+      splashFactory: NoSplash.splashFactory,
+      onTap: () => navigateTo(context: context, destination: screen),
+      child: Row(
+        children: [
+          CircleAvatar(
+            backgroundColor: Colors.transparent,
+            child: Image.asset(icon),
+          ),
+          SizedBox(width: 20),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              customText(text: header, fontSize: 14),
+              SizedBox(height: 10),
+              customText(
+                text: info,
+                fontSize: 14,
+                fontWeight: FontWeight.w100,
+                Color: Colors.white30,
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+
+Widget appsUninstallCtrl(
+  icon, {
+  required name,
+  required VoidCallback uninstall,
+}) =>
+    Padding(
+      padding: EdgeInsetsDirectional.only(bottom: 10),
+      child: Row(
+        children: [
+          CircleAvatar(
+            backgroundColor: Colors.transparent,
+            child: Image.asset(icon ?? 'assets/icons/apps.png'),
+          ),
+          Spacer(),
+          customText(text: name, fontSize: 16),
+          Spacer(),
+          MaterialButton(
+            onPressed: uninstall,
+            child: customText(text: 'Uninstall', fontSize: 16),
+            padding: EdgeInsetsDirectional.all(5),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            color: Color.fromRGBO(255, 255, 255, 0.1),
+          ),
+          SizedBox(width: 10),
+          CircleAvatar(
+            radius: 15,
+            backgroundColor: Color.fromRGBO(74, 186, 242, 1),
+            child: customText(text: 'i', fontSize: 18),
+          )
+        ],
+      ),
+    );
+
+Widget appListHeader(
+        {required title,
+        required VoidCallback toggleList,
+        required bool isOpened,
+        required numOfApps}) =>
+    InkWell(
+      onTap: toggleList,
+      splashFactory: NoSplash.splashFactory,
+      child: Row(
+        children: [
+          customText(text: title, fontSize: 16),
+          Spacer(),
+          Icon(
+            isOpened ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+            color: Colors.white,
+            size: 30,
+          ),
+          SizedBox(width: 20),
+          Container(
+            decoration: const BoxDecoration(
+              color: Color.fromRGBO(255, 255, 255, 0.1),
+              borderRadius: BorderRadiusDirectional.all(
+                Radius.circular(10),
+              ),
+            ),
+            padding: const EdgeInsetsDirectional.all(10),
+            child: customText(text: '$numOfApps', fontSize: 16),
+          ),
+        ],
+      ),
+    );
+
+Widget appToggleWidget(
+  icon, {
+  required name,
+  required Function(bool)? toggle,
+  required bool isEnabled,
+}) =>
+    Row(
+      children: [
+        CircleAvatar(
+          backgroundColor: Colors.transparent,
+          child: Image.asset(icon ?? 'assets/icons/apps.png'),
+        ),
+        SizedBox(width: 50),
+        customText(text: name, fontSize: 16),
+        Spacer(),
+        Switch(
+          value: isEnabled,
+          inactiveTrackColor: Color.fromRGBO(185, 185, 185, 1),
+          inactiveThumbColor: Colors.grey,
+          activeColor: Color.fromRGBO(162, 230, 46, 1),
+          activeTrackColor: Color.fromRGBO(185, 185, 185, 1),
+          onChanged: toggle,
+        )
+      ],
+    );
