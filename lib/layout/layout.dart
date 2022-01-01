@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<HomeProvider>(
           create: (context) => HomeProvider()
-            ..showIcon()
+            ..showSplashIcon()
             ..startingApp(context),
         ),
       ],

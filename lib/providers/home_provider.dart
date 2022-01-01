@@ -1,27 +1,16 @@
 import 'dart:async';
 
-import 'package:cleaner_app_ui/screens/home/home_screen.dart';
-import 'package:cleaner_app_ui/shared/components/components.dart';
+import 'package:cleaner_app_ui/screens/home/tabs/home.dart';
+import 'package:cleaner_app_ui/screens/home/tabs/personal.dart';
+import 'package:cleaner_app_ui/screens/home/tabs/toolbox.dart';
 import 'package:flutter/material.dart';
 
 class HomeProvider extends ChangeNotifier {
-  bool optHistoryStatus = false;
-  var currentTab = 0;
-
-  void toggleOptHistory() {
-    optHistoryStatus = !optHistoryStatus;
-    notifyListeners();
-  }
-
-  void changeTab(i) {
-    currentTab = i;
-    notifyListeners();
-  }
-
+  //splash
   bool iconVis = false;
   bool splashOpen = true;
 
-  void showIcon() {
+  void showSplashIcon() {
     Timer(Duration(seconds: 2), () {
       iconVis = true;
       notifyListeners();
@@ -33,5 +22,20 @@ class HomeProvider extends ChangeNotifier {
       splashOpen = false;
       notifyListeners();
     });
+  }
+
+  //home
+  bool optHistoryStatus = false;
+  var currentTab = 0;
+  List<Widget> homeTabs = [homeTab(), toolboxTab(), personalTab()];
+
+  void toggleOptHistory() {
+    optHistoryStatus = !optHistoryStatus;
+    notifyListeners();
+  }
+
+  void changeTab(i) {
+    currentTab = i;
+    notifyListeners();
   }
 }
