@@ -28,7 +28,7 @@ class HomeProvider extends ChangeNotifier {
   bool optHistoryStatus = false;
   var currentTab = 0;
   List<Widget> homeTabs = [homeTab(), toolboxTab(), personalTab()];
-
+  List<String> homeTabsNames = ['Home', 'Toolbox', 'Personal'];
   void toggleOptHistory() {
     optHistoryStatus = !optHistoryStatus;
     notifyListeners();
