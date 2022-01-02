@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:cleaner_app_ui/screens/home/tabs/home.dart';
-import 'package:cleaner_app_ui/screens/home/tabs/personal.dart';
-import 'package:cleaner_app_ui/screens/home/tabs/toolbox.dart';
+import 'package:cleaner_app_ui/screens/home_tab/home.dart';
+import 'package:cleaner_app_ui/screens/personal_tab/personal.dart';
+import 'package:cleaner_app_ui/screens/toolbox_tab/toolbox.dart';
 import 'package:flutter/material.dart';
 
 class HomeProvider extends ChangeNotifier {

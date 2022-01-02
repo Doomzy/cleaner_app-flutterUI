@@ -1,12 +1,11 @@
 import 'package:cleaner_app_ui/providers/home_provider.dart';
+import 'package:cleaner_app_ui/screens/toolbox_tab/toolbox_screens/app_lock.dart';
+import 'package:cleaner_app_ui/screens/toolbox_tab/toolbox_screens/app_unin.dart';
+import 'package:cleaner_app_ui/screens/toolbox_tab/toolbox_screens/notification.dart';
 import 'package:cleaner_app_ui/shared/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-
-import 'toolbox_screens/app_lock.dart';
-import 'toolbox_screens/app_unin.dart';
-import 'toolbox_screens/notification.dart';
 
 Widget toolboxTab() => Consumer<HomeProvider>(
       builder: (context, hp, child) => Padding(

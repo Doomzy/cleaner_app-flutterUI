@@ -1,9 +1,8 @@
 import 'package:cleaner_app_ui/providers/home_provider.dart';
+import 'package:cleaner_app_ui/screens/personal_tab/personal_screens/settings.dart';
 import 'package:cleaner_app_ui/shared/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'personal_screens/settings.dart';
 
 Widget personalTab() => Consumer<HomeProvider>(
       builder: (context, hp, child) => Padding(
