@@ -2,6 +2,7 @@ import 'package:cleaner_app_ui/providers/settings_provider.dart';
 import 'package:cleaner_app_ui/shared/components/components.dart';
 import 'package:collection/src/list_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class settingsScreen extends StatelessWidget {
@@ -10,7 +11,7 @@ class settingsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
-        padding: EdgeInsetsDirectional.only(start: 25, end: 25),
+        padding: EdgeInsets.symmetric(horizontal: 25),
         child: Consumer<SettingsProvider>(
           builder: (context, sp, child) => Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +65,7 @@ class settingsScreen extends StatelessWidget {
               ),
               defaultListWidget(
                 title: 'Junk reminder frequency',
-                info: 'Every day',
+                info: sp.reminderFrequincies[sp.reminderFreq],
                 onTap: () => reminderPopUp(
                   context: context,
                   jrfList: sp.reminderFrequincies,
@@ -182,6 +183,7 @@ class settingsScreen extends StatelessWidget {
               onPressed: () {
                 Provider.of<SettingsProvider>(context, listen: false)
                     .setFreq(i);
+                Navigator.pop(context);
               },
               child: customText(
                 text: e,
