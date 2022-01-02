@@ -126,16 +126,20 @@ Widget cleanerOpsBtn({
       ),
     );
 
-Widget toolboxOptions({
+Widget listOptions({
   required header,
-  required info,
   required icon,
-  required context,
-  required screen,
+  BuildContext? context,
+  Widget? screen,
+  String? info,
 }) =>
     InkWell(
       splashFactory: NoSplash.splashFactory,
-      onTap: () => navigateTo(context: context, destination: screen),
+      onTap: () {
+        screen != null
+            ? navigateTo(context: context, destination: screen)
+            : null;
+      },
       child: Row(
         children: [
           CircleAvatar(
@@ -148,11 +152,14 @@ Widget toolboxOptions({
             children: [
               customText(text: header, fontSize: 14),
               SizedBox(height: 10),
-              customText(
-                text: info,
-                fontSize: 14,
-                fontWeight: FontWeight.w100,
-                Color: Colors.white30,
+              Visibility(
+                visible: info == null ? false : true,
+                child: customText(
+                  text: info ?? '',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w100,
+                  Color: Colors.white30,
+                ),
               ),
             ],
           )
@@ -227,28 +234,128 @@ Widget appListHeader(
       ),
     );
 
-Widget appToggleWidget(
+Widget toggleWidget(
   icon, {
   required name,
   required Function(bool)? toggle,
   required bool isEnabled,
+  isSettings = false,
+  String? info,
 }) =>
-    Row(
+    Column(
       children: [
-        CircleAvatar(
-          backgroundColor: Colors.transparent,
-          child: Image.asset(icon ?? 'assets/icons/apps.png'),
+        Row(
+          children: [
+            Visibility(
+              visible: !isSettings,
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: Colors.transparent,
+                    child: Image.asset(icon ?? 'assets/icons/apps.png'),
+                  ),
+                  SizedBox(width: 50),
+                ],
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                customText(text: name, fontSize: 16),
+                SizedBox(height: 10),
+                Visibility(
+                  visible: isSettings && info != null,
+                  child: customText(
+                    text: info ?? '',
+                    fontSize: 14,
+                    fontWeight: FontWeight.w100,
+                    Color: Colors.white30,
+                  ),
+                ),
+              ],
+            ),
+            Spacer(),
+            Switch(
+              value: isEnabled,
+              inactiveTrackColor: Color.fromRGBO(185, 185, 185, 1),
+              inactiveThumbColor: Colors.grey,
+              activeColor: Color.fromRGBO(162, 230, 46, 1),
+              activeTrackColor: Color.fromRGBO(185, 185, 185, 1),
+              onChanged: toggle,
+            )
+          ],
         ),
-        SizedBox(width: 50),
-        customText(text: name, fontSize: 16),
-        Spacer(),
-        Switch(
-          value: isEnabled,
-          inactiveTrackColor: Color.fromRGBO(185, 185, 185, 1),
-          inactiveThumbColor: Colors.grey,
-          activeColor: Color.fromRGBO(162, 230, 46, 1),
-          activeTrackColor: Color.fromRGBO(185, 185, 185, 1),
-          onChanged: toggle,
-        )
+        SizedBox(height: 15)
+      ],
+    );
+
+Widget listTimeWiget({
+  required VoidCallback onTap,
+  required title,
+  required info,
+}) =>
+    InkWell(
+      splashFactory: NoSplash.splashFactory,
+      onTap: onTap,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          customText(text: title, fontSize: 16),
+          Spacer(),
+          customText(
+            text: info,
+            fontSize: 14,
+            fontWeight: FontWeight.w100,
+            Color: Colors.white30,
+          ),
+        ],
+      ),
+    );
+
+Widget defaultListWidget({
+  required title,
+  required info,
+  VoidCallback? onTap,
+  padding = 20.0,
+}) =>
+    InkWell(
+      splashFactory: NoSplash.splashFactory,
+      onTap: onTap,
+      child: Padding(
+        padding: EdgeInsetsDirectional.only(top: padding, start: padding),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            customText(text: title, fontSize: 16),
+            SizedBox(height: 10),
+            customText(
+              text: info,
+              fontSize: 14,
+              fontWeight: FontWeight.w100,
+              Color: Colors.white30,
+            ),
+          ],
+        ),
+      ),
+    );
+
+Widget alertDialogTitle({required text, required context}) => Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            MaterialButton(
+              minWidth: 5,
+              onPressed: () => Navigator.pop(context),
+              padding: EdgeInsetsDirectional.all(0),
+              child: customText(
+                  text: 'X',
+                  Color: Color.fromRGBO(255, 255, 255, 0.5),
+                  fontSize: 18),
+            )
+          ],
+        ),
+        customText(text: text, fontSize: 16, fontWeight: FontWeight.bold),
       ],
     );

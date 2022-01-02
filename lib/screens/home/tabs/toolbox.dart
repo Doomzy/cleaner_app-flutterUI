@@ -21,7 +21,7 @@ Widget toolboxTab() => Consumer<HomeProvider>(
               letteSpacing: 1.5,
             ),
             SizedBox(height: 20),
-            toolboxOptions(
+            listOptions(
               header: 'App uninstall',
               info: 'Rapidly uninstall useless apps',
               icon: 'assets/icons/android.png',
@@ -36,7 +36,7 @@ Widget toolboxTab() => Consumer<HomeProvider>(
               letteSpacing: 1.5,
             ),
             SizedBox(height: 20),
-            toolboxOptions(
+            listOptions(
               header: 'Notification',
               info: 'Make messy notification bar fresh again',
               icon: 'assets/icons/notification.png',
@@ -44,7 +44,7 @@ Widget toolboxTab() => Consumer<HomeProvider>(
               screen: NotificationScreen(),
             ),
             SizedBox(height: 20),
-            toolboxOptions(
+            listOptions(
               header: 'App lock',
               info: 'Protect the privacy data and the property',
               icon: 'assets/icons/lock.png',

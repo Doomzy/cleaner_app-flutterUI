@@ -1,4 +1,5 @@
 import 'package:cleaner_app_ui/providers/home_provider.dart';
+import 'package:cleaner_app_ui/providers/settings_provider.dart';
 import 'package:cleaner_app_ui/providers/toolbox_provider.dart';
 import 'package:cleaner_app_ui/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<ToolboxProvider>(
           create: (context) => ToolboxProvider(),
+        ),
+        ChangeNotifierProvider<SettingsProvider>(
+          create: (context) => SettingsProvider(),
         ),
       ],
       builder: (context, child) => MaterialApp(
