@@ -321,20 +321,23 @@ Widget defaultListWidget({
     InkWell(
       splashFactory: NoSplash.splashFactory,
       onTap: onTap,
-      child: Padding(
-        padding: EdgeInsetsDirectional.only(top: padding, start: padding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            customText(text: title, fontSize: 16),
-            SizedBox(height: 10),
-            customText(
-              text: info,
-              fontSize: 14,
-              fontWeight: FontWeight.w100,
-              Color: Colors.white30,
-            ),
-          ],
+      child: Container(
+        width: double.infinity,
+        child: Padding(
+          padding: EdgeInsetsDirectional.only(top: padding, start: padding),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              customText(text: title, fontSize: 16),
+              SizedBox(height: 10),
+              customText(
+                text: info,
+                fontSize: 14,
+                fontWeight: FontWeight.w100,
+                Color: Colors.white30,
+              ),
+            ],
+          ),
         ),
       ),
     );

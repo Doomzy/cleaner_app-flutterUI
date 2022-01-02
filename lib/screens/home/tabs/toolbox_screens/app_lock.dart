@@ -9,31 +9,33 @@ class AppLockScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
-        padding: EdgeInsetsDirectional.all(25),
+        padding: EdgeInsets.symmetric(horizontal: 25),
         child: Consumer<ToolboxProvider>(
-          builder: (context, tp, child) => Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              customText(text: 'App lock', fontWeight: FontWeight.bold),
-              SizedBox(height: 30),
-              customText(
-                text:
-                    'The selected app`s will not be canceled during the cleanup',
-                fontSize: 14,
-              ),
-              Divider(color: Colors.white, thickness: 2),
-              SizedBox(height: 20),
-              Column(
-                children: tp.appLockApps.entries.map((e) {
-                  return toggleWidget(
-                    e.key.iconPath,
-                    name: e.key.appName,
-                    toggle: (b) => tp.toggleSwitch(b, e.key, 3),
-                    isEnabled: e.value,
-                  );
-                }).toList(),
-              ),
-            ],
+          builder: (context, tp, child) => SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                customText(text: 'App lock', fontWeight: FontWeight.bold),
+                SizedBox(height: 30),
+                customText(
+                  text:
+                      'The selected app`s will not be canceled during the cleanup',
+                  fontSize: 14,
+                ),
+                Divider(color: Colors.white, thickness: 2),
+                SizedBox(height: 20),
+                Column(
+                  children: tp.appLockApps.entries.map((e) {
+                    return toggleWidget(
+                      e.key.iconPath,
+                      name: e.key.appName,
+                      toggle: (b) => tp.toggleSwitch(b, e.key, 3),
+                      isEnabled: e.value,
+                    );
+                  }).toList(),
+                ),
+              ],
+            ),
           ),
         ),
       ),
