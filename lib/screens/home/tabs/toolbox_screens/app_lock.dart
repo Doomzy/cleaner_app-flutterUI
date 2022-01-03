@@ -28,7 +28,7 @@ class AppLockScreen extends StatelessWidget {
                   children: tp.appLockApps.entries.map((e) {
                     return toggleWidget(
                       e.key.iconPath,
-                      name: e.key.appName,
+                      name: e.key.name,
                       toggle: (b) => tp.toggleSwitch(b, e.key, 3),
                       isEnabled: e.value,
                     );

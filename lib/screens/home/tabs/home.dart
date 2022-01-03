@@ -1,4 +1,6 @@
 import 'package:cleaner_app_ui/providers/home_provider.dart';
+import 'package:cleaner_app_ui/screens/operations/operations_screen.dart';
+import 'package:cleaner_app_ui/screens/operations/tabs/planner.dart';
 import 'package:cleaner_app_ui/shared/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -61,15 +63,41 @@ Widget homeTab() => Consumer<HomeProvider>(
               spacing: 10,
               children: [
                 cleanerOpsBtn(
-                    title: 'Phone boost', icon: 'assets/icons/rocket.png'),
+                  title: 'Phone boost',
+                  icon: 'assets/icons/rocket.png',
+                  context: context,
+                  screen: OperationsScreen(0),
+                ),
                 cleanerOpsBtn(
-                    title: 'Battery saver', icon: 'assets/icons/battery.png'),
+                  title: 'Battery saver',
+                  icon: 'assets/icons/battery.png',
+                  context: context,
+                  screen: OperationsScreen(1),
+                ),
                 cleanerOpsBtn(
-                    title: 'App secure', icon: 'assets/icons/bug.png'),
-                cleanerOpsBtn(title: 'Media', icon: 'assets/icons/folder.png'),
+                  title: 'App secure',
+                  icon: 'assets/icons/bug.png',
+                  context: context,
+                  screen: OperationsScreen(2),
+                ),
                 cleanerOpsBtn(
-                    title: 'CPU cooler', icon: 'assets/icons/cpu.png'),
-                cleanerOpsBtn(title: 'Planner', icon: 'assets/icons/clock.png'),
+                  title: 'Media',
+                  icon: 'assets/icons/folder.png',
+                  context: context,
+                  screen: OperationsScreen(3),
+                ),
+                cleanerOpsBtn(
+                  title: 'CPU cooler',
+                  icon: 'assets/icons/cpu.png',
+                  context: context,
+                  screen: OperationsScreen(4),
+                ),
+                cleanerOpsBtn(
+                  title: 'Planner',
+                  icon: 'assets/icons/clock.png',
+                  context: context,
+                  screen: PlannerScreen(),
+                ),
               ],
             ),
             SizedBox(height: 40),
