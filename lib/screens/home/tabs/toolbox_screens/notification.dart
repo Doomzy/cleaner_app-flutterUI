@@ -28,7 +28,7 @@ class NotificationScreen extends StatelessWidget {
                   children: tp.socialNApps.entries.map((e) {
                     return toggleWidget(
                       e.key.iconPath,
-                      name: e.key.appName,
+                      name: e.key.name,
                       toggle: (b) => tp.toggleSwitch(b, e.key, 1),
                       isEnabled: e.value,
                     );
@@ -46,7 +46,7 @@ class NotificationScreen extends StatelessWidget {
                   children: tp.thirdPApps.entries.map((e) {
                     return toggleWidget(
                       e.key.iconPath,
-                      name: e.key.appName,
+                      name: e.key.name,
                       toggle: (b) => tp.toggleSwitch(b, e.key, 2),
                       isEnabled: e.value,
                     );

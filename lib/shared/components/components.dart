@@ -1,4 +1,8 @@
+import 'package:cleaner_app_ui/providers/operations_provider.dart';
+import 'package:cleaner_app_ui/screens/animation/animation_section.dart';
+import 'package:cleaner_app_ui/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void navigateTo({required context, required Widget destination}) =>
     Navigator.push(
@@ -14,21 +18,47 @@ void navigateToAndRemove({required context, required Widget destination}) =>
         MaterialPageRoute(builder: (context) => destination),
         (Route<dynamic> route) => false);
 
-Widget customText({
-  required text,
-  double fontSize = 24,
-  Color = Colors.white,
-  double? letteSpacing,
-  fontWeight = FontWeight.normal,
-}) =>
+Widget customText(
+        {required text,
+        double fontSize = 24,
+        Color = Colors.white,
+        double? letteSpacing,
+        fontWeight = FontWeight.normal,
+        textAlign = TextAlign.start}) =>
     Text(
       text,
+      textAlign: textAlign,
       style: TextStyle(
         color: Color,
         fontSize: fontSize,
         letterSpacing: letteSpacing,
         fontWeight: fontWeight,
       ),
+    );
+
+Widget customButton(
+  VoidCallback? onPressed, {
+  required text,
+  required color,
+}) =>
+    Center(
+      child: MaterialButton(
+        minWidth: 350,
+        child: customText(text: text, fontSize: 20),
+        padding: EdgeInsets.symmetric(vertical: 25),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(40),
+        ),
+        color: color,
+        onPressed: onPressed,
+      ),
+    );
+
+Widget homeIcon(context) => IconButton(
+      onPressed: () =>
+          navigateToAndRemove(context: context, destination: HomeScreen()),
+      icon: Icon(Icons.home),
+      color: Colors.white,
     );
 
 Widget circularProgressBar({
@@ -98,6 +128,8 @@ Widget statusInfo({
 Widget cleanerOpsBtn({
   required icon,
   required title,
+  required BuildContext context,
+  required Widget screen,
 }) =>
     Container(
       width: 120,
@@ -108,7 +140,7 @@ Widget cleanerOpsBtn({
       clipBehavior: Clip.hardEdge,
       margin: EdgeInsetsDirectional.only(top: 10),
       child: MaterialButton(
-        onPressed: () {},
+        onPressed: () => navigateTo(context: context, destination: screen),
         padding: const EdgeInsetsDirectional.only(top: 20, bottom: 20),
         color: const Color.fromRGBO(255, 255, 255, 0.1),
         child: Column(
@@ -261,7 +293,10 @@ Widget toggleWidget(
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                customText(text: name, fontSize: 16),
+                Container(
+                  width: isSettings ? 240 : 190,
+                  child: customText(text: name, fontSize: 16),
+                ),
                 SizedBox(height: 10),
                 Visibility(
                   visible: isSettings && info != null,
@@ -362,3 +397,66 @@ Widget alertDialogTitle({required text, required context}) => Column(
         customText(text: text, fontSize: 16, fontWeight: FontWeight.bold),
       ],
     );
+
+Widget operationIconAnim(
+    {required startAnim, required context, required opIcon}) {
+  return Container(
+    alignment: AlignmentDirectional.center,
+    height: 300,
+    child: Stack(
+      alignment: AlignmentDirectional.center,
+      children: [
+        Visibility(
+          visible: startAnim,
+          child: MyLoadingAnim(),
+        ),
+        Image.asset(
+          opIcon,
+          width: 300,
+          height: 300,
+        ),
+      ],
+    ),
+  );
+}
+
+Widget operationTasks({
+  required bool done,
+  String? icon,
+  required name,
+}) {
+  return Row(
+    children: [
+      CircleAvatar(
+        backgroundColor:
+            done ? Colors.lightGreen : Color.fromRGBO(50, 50, 50, 1),
+        radius: 12,
+        child: Visibility(
+          visible: done,
+          child: Icon(
+            Icons.check,
+            size: 12,
+            color: Colors.white,
+          ),
+        ),
+      ),
+      SizedBox(width: 20),
+      icon == null
+          ? SizedBox()
+          : Row(
+              children: [
+                Image.asset(
+                  icon,
+                  width: 20,
+                ),
+                SizedBox(width: 20),
+              ],
+            ),
+      customText(
+        text: name,
+        fontSize: 14,
+      ),
+      SizedBox(height: 40),
+    ],
+  );
+}

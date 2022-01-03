@@ -31,7 +31,7 @@ class AppUninstallScreen extends StatelessWidget {
                     children: tp.userApps.mapIndexed((index, element) {
                       return appsUninstallCtrl(
                         element.iconPath,
-                        name: element.appName,
+                        name: element.name,
                         uninstall: () => tp.uninstallApp(1, index),
                       );
                     }).toList(),
@@ -50,7 +50,7 @@ class AppUninstallScreen extends StatelessWidget {
                     children: tp.systemApps.mapIndexed((index, element) {
                       return appsUninstallCtrl(
                         element.iconPath,
-                        name: element.appName,
+                        name: element.name,
                         uninstall: () => tp.uninstallApp(2, index),
                       );
                     }).toList(),

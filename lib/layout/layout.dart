@@ -1,4 +1,5 @@
 import 'package:cleaner_app_ui/providers/home_provider.dart';
+import 'package:cleaner_app_ui/providers/operations_provider.dart';
 import 'package:cleaner_app_ui/providers/settings_provider.dart';
 import 'package:cleaner_app_ui/providers/toolbox_provider.dart';
 import 'package:cleaner_app_ui/screens/home/home_screen.dart';
@@ -20,6 +21,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<SettingsProvider>(
           create: (context) => SettingsProvider(),
+        ),
+        ChangeNotifierProvider<OperationsProvider>(
+          create: (context) => OperationsProvider()..addingTasks(),
         ),
       ],
       builder: (context, child) => MaterialApp(
