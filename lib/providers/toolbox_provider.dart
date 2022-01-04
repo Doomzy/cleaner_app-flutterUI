@@ -11,15 +11,15 @@ class ToolboxProvider extends ChangeNotifier {
   }
 
   List<appModel> userApps = [
-    appModel(null, 'Facebook'),
-    appModel(null, 'Instagram'),
-    appModel('assets/icons/youtube.png', 'Youtube'),
-    appModel(null, 'Game'),
+    appModel(iconPath: null, name: 'Facebook'),
+    appModel(iconPath: null, name: 'Instagram'),
+    appModel(iconPath: 'assets/icons/youtube.png', name: 'Youtube'),
+    appModel(iconPath: null, name: 'Game'),
   ];
 
   List<appModel> systemApps = [
-    appModel(null, 'Google'),
-    appModel('assets/icons/photos.png', 'Photos'),
+    appModel(iconPath: null, name: 'Google'),
+    appModel(iconPath: 'assets/icons/photos.png', name: 'Photos'),
   ];
 
   void uninstallApp(lId, i) {
@@ -28,24 +28,24 @@ class ToolboxProvider extends ChangeNotifier {
   }
 
   Map<appModel, bool> socialNApps = {
-    appModel(null, 'Twitter'): true,
-    appModel('assets/icons/youtube.png', 'Youtube'): true,
+    appModel(iconPath: null, name: 'Twitter'): true,
+    appModel(iconPath: 'assets/icons/youtube.png', name: 'Youtube'): true,
   };
 
   Map<appModel, bool> thirdPApps = {
-    appModel('assets/icons/gmail.png', 'Gmail'): true,
-    appModel('assets/icons/translate.png', 'Translate'): false,
+    appModel(iconPath: 'assets/icons/gmail.png', name: 'Gmail'): true,
+    appModel(iconPath: 'assets/icons/translate.png', name: 'Translate'): false,
   };
 
   Map<appModel, bool> appLockApps = {
-    appModel('assets/icons/gmail.png', 'Gmail'): true,
-    appModel('assets/icons/gdrive.png', 'Google drive'): true,
-    appModel('assets/icons/calls.png', 'Calls'): true,
-    appModel('assets/icons/chrome.png', 'Chrome'): false,
-    appModel('assets/icons/maps.png', 'Maps'): false,
-    appModel('assets/icons/photos.png', 'Photos'): true,
-    appModel('assets/icons/translate.png', 'Translate'): false,
-    appModel('assets/icons/youtube.png', 'Youtube'): false,
+    appModel(iconPath: 'assets/icons/gmail.png', name: 'Gmail'): true,
+    appModel(iconPath: 'assets/icons/gdrive.png', name: 'Google drive'): true,
+    appModel(iconPath: 'assets/icons/calls.png', name: 'Calls'): true,
+    appModel(iconPath: 'assets/icons/chrome.png', name: 'Chrome'): false,
+    appModel(iconPath: 'assets/icons/maps.png', name: 'Maps'): false,
+    appModel(iconPath: 'assets/icons/photos.png', name: 'Photos'): true,
+    appModel(iconPath: 'assets/icons/translate.png', name: 'Translate'): false,
+    appModel(iconPath: 'assets/icons/youtube.png', name: 'Youtube'): false,
   };
 
   void toggleSwitch(b, e, mId) {

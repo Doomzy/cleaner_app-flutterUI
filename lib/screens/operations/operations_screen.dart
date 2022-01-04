@@ -83,28 +83,34 @@ class OperationsScreen extends StatelessWidget {
                         Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            color: Color.fromRGBO(255, 255, 255, 0.1),
+                            color: op.operations[optId!.toInt()].color,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           padding: EdgeInsets.symmetric(
                             vertical: 20,
                             horizontal: 25,
                           ),
-                          child: customText(
-                            text: op.operations[optId!.toInt()].mainMsg,
-                            fontSize: 16,
+                          child: Center(
+                            child: customText(
+                              text: op.operations[optId!.toInt()].mainMsg,
+                              fontSize: 16,
+                            ),
                           ),
                         ),
                         SizedBox(height: 40),
                         customButton(
                           () {
-                            op.validateOperaion(optId)
-                                ? errorPopUp(
-                                    context: context,
-                                    text:
-                                        'Operation cannot be started because theres no tasks',
-                                  )
-                                : op.startAnim(optId, context);
+                            optId == 2 || optId == 3
+                                ? op.startSearch(context, optId)
+                                : op.validateOperaion(optId)
+                                    ? customPopUp(
+                                        context: context,
+                                        text:
+                                            'Operation cannot be started because theres no tasks',
+                                        buttonT: 'Close',
+                                        buttonF: () => Navigator.pop(context),
+                                      )
+                                    : op.startAnim(optId, context);
                           },
                           text: op.operations[optId!.toInt()].buttonText,
                           color: Color.fromRGBO(86, 204, 242, 1),
@@ -144,42 +150,11 @@ class OperationsScreen extends StatelessWidget {
               name: e.key.name,
               toggle: (b) =>
                   Provider.of<OperationsProvider>(context, listen: false)
-                      .toggleBoosting(b, e.key),
+                      .toggletasks(e.key, 0),
               isEnabled: e.value,
               isSettings: true,
             );
           }).toList(),
-        ),
-      ),
-    );
-  }
-
-  Future errorPopUp({required context, required text}) {
-    return showDialog(
-      barrierColor: Colors.white10,
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: Colors.black,
-        titlePadding: EdgeInsetsDirectional.only(top: 50, start: 25, end: 25),
-        title: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            customText(
-                text: text,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                letteSpacing: 1.5,
-                textAlign: TextAlign.center),
-            SizedBox(height: 20),
-            MaterialButton(
-              onPressed: () => Navigator.pop(context),
-              textColor: Colors.green,
-              child: Text(
-                'OK',
-              ),
-            )
-          ],
         ),
       ),
     );
