@@ -460,3 +460,54 @@ Widget operationTasks({
     ],
   );
 }
+
+Future customPopUp({
+  required context,
+  required text,
+  required buttonT,
+  required VoidCallback buttonF,
+  IconData? icon,
+}) {
+  return showDialog(
+    barrierColor: Colors.white10,
+    context: context,
+    builder: (context) => AlertDialog(
+      backgroundColor: Colors.black,
+      titlePadding: EdgeInsetsDirectional.only(top: 50, start: 25, end: 25),
+      title: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          customText(
+              text: text,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              letteSpacing: 1.5,
+              textAlign: TextAlign.center),
+          SizedBox(height: 20),
+          icon != null
+              ? Column(
+                  children: [
+                    Icon(
+                      icon,
+                      size: 80,
+                      color: Color.fromRGBO(255, 255, 255, 0.5),
+                    ),
+                    SizedBox(height: 20),
+                  ],
+                )
+              : SizedBox(),
+          Row(
+            children: [
+              Spacer(),
+              MaterialButton(
+                onPressed: buttonF,
+                textColor: Colors.green,
+                child: Text(buttonT),
+              ),
+            ],
+          )
+        ],
+      ),
+    ),
+  );
+}

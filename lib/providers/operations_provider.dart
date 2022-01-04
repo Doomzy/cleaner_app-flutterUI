@@ -1,59 +1,73 @@
 import 'dart:async';
 
 import 'package:cleaner_app_ui/models/models.dart';
+import 'package:cleaner_app_ui/screens/operations/tabs/app_secure.dart';
+import 'package:cleaner_app_ui/screens/operations/tabs/media.dart';
+import 'package:cleaner_app_ui/screens/operations/tabs/searching.dart';
+import 'package:cleaner_app_ui/shared/components/components.dart';
 import 'package:flutter/material.dart';
 
 class OperationsProvider extends ChangeNotifier {
   Map<appModel, bool> boostingOpts = {
-    appModel(null, 'Delete background processes'): true,
-    appModel(null, 'Clean up system paths'): true,
-    appModel(null, 'Adjust the system keys'): true,
-    appModel(null, 'Check unused components'): true,
-    appModel(null, 'Disconnect from unnecessary GPS towers'): true,
-    appModel(null, 'Check for deviations from the factory settings'): true,
-    appModel(null, 'Check hidden notifications'): true,
+    appModel(iconPath: null, name: 'Delete background processes'): true,
+    appModel(iconPath: null, name: 'Clean up system paths'): true,
+    appModel(iconPath: null, name: 'Adjust the system keys'): true,
+    appModel(iconPath: null, name: 'Check unused components'): true,
+    appModel(iconPath: null, name: 'Disconnect from unnecessary GPS towers'):
+        true,
+    appModel(
+        iconPath: null,
+        name: 'Check for deviations from the factory settings'): true,
+    appModel(iconPath: null, name: 'Check hidden notifications'): true,
   };
 
   Map<appModel, bool> optimizaitionOpts = {
-    appModel(null, 'Decrease in brightness'): true,
-    appModel(null, 'Сlosing apps'): true,
-    appModel(null, 'Turn off the sound'): true,
-    appModel(null, 'Сlosing apps'): true,
-    appModel(null, 'Vibration feedback of the keyboard'): true,
-    appModel(null, 'Enable battery saving mode'): true,
-    appModel(null, 'Reduce waiting time'): true,
+    appModel(iconPath: null, name: 'Decrease in brightness'): true,
+    appModel(iconPath: null, name: 'Сlosing apps'): true,
+    appModel(iconPath: null, name: 'Turn off the sound'): true,
+    appModel(iconPath: null, name: 'Сlosing apps'): true,
+    appModel(iconPath: null, name: 'Vibration feedback of the keyboard'): true,
+    appModel(iconPath: null, name: 'Enable battery saving mode'): true,
+    appModel(iconPath: null, name: 'Reduce waiting time'): true,
   };
 
   Map<appModel, bool> secureOpts = {
-    appModel('assets/icons/gmail.png', 'Gmail'): true,
-    appModel('assets/icons/gdrive.png', 'Google drive'): true,
-    appModel('assets/icons/chrome.png', 'Chrome'): true,
-    appModel('assets/icons/maps.png', 'Maps'): true,
-    appModel('assets/icons/photos.png', 'Photos'): true,
-    appModel('assets/icons/translate.png', 'Translate'): true,
-    appModel('assets/icons/youtube.png', 'Youtube'): true,
+    appModel(iconPath: 'assets/icons/gmail.png', name: 'Gmail'): true,
+    appModel(iconPath: 'assets/icons/gdrive.png', name: 'Google drive'): true,
+    appModel(iconPath: 'assets/icons/chrome.png', name: 'Chrome'): true,
+    appModel(iconPath: 'assets/icons/maps.png', name: 'Maps'): true,
+    appModel(iconPath: 'assets/icons/photos.png', name: 'Photos'): true,
+    appModel(iconPath: 'assets/icons/translate.png', name: 'Translate'): true,
+    appModel(iconPath: 'assets/icons/youtube.png', name: 'Youtube'): true,
   };
 
   Map<appModel, bool> mediaOpts = {
-    appModel(null, 'Portfolio shoot.jpeg'): true,
-    appModel(null, 'Baby Shower.jpeg'): true,
-    appModel(null, 'New born.jpeg'): true,
-    appModel(null, 'Clothes branding.jpeg'): true,
-    appModel(null, 'The Count of Monte Cristo.jpeg'): true,
-    appModel(null, 'Family photo.jpeg'): true,
-    appModel(null, 'Material shoot.jpeg'): true,
-    appModel(null, 'The Alchemist.jpeg'): true,
+    appModel(iconPath: 'assets/media/dup1.png', name: 'Portfolio shoot.jpeg'):
+        true,
+    appModel(iconPath: 'assets/media/dup5.png', name: 'Baby Shower.jpeg'): true,
+    appModel(iconPath: 'assets/media/dup6.png', name: 'New born.jpeg'): true,
+    appModel(iconPath: 'assets/media/dup6.png', name: 'Clothes branding.jpeg'):
+        true,
+    appModel(
+        iconPath: 'assets/media/dup1.png',
+        name: 'The Count of Monte Cristo.jpeg'): true,
+    appModel(iconPath: 'assets/media/dup5.png', name: 'Family photo.jpeg'):
+        true,
+    appModel(iconPath: 'assets/media/dup5.png', name: 'Material shoot.jpeg'):
+        true,
+    appModel(iconPath: 'assets/media/dup1.png', name: 'The Alchemist.jpeg'):
+        true,
   };
 
   Map<appModel, bool> cpuOpts = {
-    appModel('assets/icons/youtube.png', 'Youtube'): true,
-    appModel('assets/icons/calls.png', 'Calls'): true,
-    appModel('assets/icons/gmail.png', 'Gmail'): true,
-    appModel('assets/icons/gdrive.png', 'Google drive'): true,
-    appModel('assets/icons/chrome.png', 'Chrome'): true,
-    appModel('assets/icons/maps.png', 'Maps'): true,
-    appModel('assets/icons/photos.png', 'Photos'): true,
-    appModel('assets/icons/translate.png', 'Translate'): true,
+    appModel(iconPath: 'assets/icons/youtube.png', name: 'Youtube'): true,
+    appModel(iconPath: 'assets/icons/calls.png', name: 'Calls'): true,
+    appModel(iconPath: 'assets/icons/gmail.png', name: 'Gmail'): true,
+    appModel(iconPath: 'assets/icons/gdrive.png', name: 'Google drive'): true,
+    appModel(iconPath: 'assets/icons/chrome.png', name: 'Chrome'): true,
+    appModel(iconPath: 'assets/icons/maps.png', name: 'Maps'): true,
+    appModel(iconPath: 'assets/icons/photos.png', name: 'Photos'): true,
+    appModel(iconPath: 'assets/icons/translate.png', name: 'Translate'): true,
   };
 
   List<Map> opTasks = [];
@@ -66,8 +80,8 @@ class OperationsProvider extends ChangeNotifier {
     opTasks.add(cpuOpts);
   }
 
-  void toggleBoosting(b, e) {
-    boostingOpts[e] = b;
+  void toggletasks(e, i) {
+    opTasks[i][e] = !opTasks[i][e];
     notifyListeners();
   }
 
@@ -81,10 +95,11 @@ class OperationsProvider extends ChangeNotifier {
       }
     });
 
-    if (tasksCount == opTasks[i].length)
+    if (tasksCount == opTasks[i].length) {
       return true;
-    else
+    } else {
       return false;
+    }
   }
 
   bool inProgress = false;
@@ -98,6 +113,7 @@ class OperationsProvider extends ChangeNotifier {
       icon: 'assets/animation/backgrounds/phone-boost.png',
       doneIcon: 'assets/animation/backgrounds/boost-done.png',
       doneMsg: 'Boosted',
+      color: Color.fromRGBO(255, 255, 255, 0.1),
       name: 'Boost optimaizer',
       mainMsg:
           'Reduce device usage for faster performance and lower battery drain',
@@ -107,6 +123,7 @@ class OperationsProvider extends ChangeNotifier {
       icon: 'assets/animation/backgrounds/battery-saver.png',
       doneIcon: 'assets/animation/backgrounds/battery-done.png',
       doneMsg: 'Optimized',
+      color: Colors.red,
       name: 'Battery saver',
       mainMsg: 'Charging time remanig 0 h 30 m',
       buttonText: 'Optimize',
@@ -115,6 +132,7 @@ class OperationsProvider extends ChangeNotifier {
       icon: 'assets/animation/backgrounds/app-secure.png',
       doneIcon: 'assets/animation/backgrounds/secure-done.png',
       doneMsg: 'Cleaned',
+      color: Colors.red,
       name: 'App secure',
       mainMsg: 'Threats detected',
       buttonText: 'Search',
@@ -123,6 +141,7 @@ class OperationsProvider extends ChangeNotifier {
       icon: 'assets/animation/backgrounds/media.png',
       doneIcon: 'assets/animation/steps/anim8.png',
       doneMsg: 'Cleaned',
+      color: Color.fromRGBO(255, 255, 255, 0.1),
       name: 'Media',
       mainMsg: 'Your permission is required to delete media',
       buttonText: 'Give a permission',
@@ -131,6 +150,7 @@ class OperationsProvider extends ChangeNotifier {
       icon: 'assets/animation/backgrounds/cpu-cooler.png',
       doneIcon: 'assets/animation/backgrounds/cooler-done.png',
       doneMsg: 'Cooled',
+      color: Colors.red,
       name: 'CPU cooler',
       mainMsg: 'Temperature is 40.0°C Need to cool down',
       buttonText: 'Cool',
@@ -180,6 +200,23 @@ class OperationsProvider extends ChangeNotifier {
             )).then((value) {
       plans.add(value!.format(context).toString());
       notifyListeners();
+    });
+  }
+
+  bool searching = false;
+
+  void startSearch(context, i) {
+    searching = true;
+    navigateTo(context: context, destination: SearchingScreen());
+    Timer(Duration(seconds: 8), () {
+      searching = false;
+      notifyListeners();
+      if (i == 2) {
+        Navigator.pop(context);
+        navigateTo(context: context, destination: AppSecureScreen());
+      } else {
+        navigateTo(context: context, destination: MediaScreen());
+      }
     });
   }
 }

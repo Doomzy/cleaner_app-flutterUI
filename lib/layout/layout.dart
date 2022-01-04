@@ -29,19 +29,23 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            appBarTheme: const AppBarTheme(
-              backgroundColor: Colors.black,
-            ),
-            bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-              elevation: 0,
-              backgroundColor: Colors.black,
-              selectedItemColor: Colors.white,
-              unselectedItemColor: Colors.grey,
-            ),
-            scaffoldBackgroundColor: Colors.black,
-            colorScheme: ColorScheme.fromSwatch(
-              accentColor: Colors.green,
-            )),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.black,
+          ),
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            elevation: 0,
+            backgroundColor: Colors.black,
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.grey,
+          ),
+          scaffoldBackgroundColor: Colors.black,
+          colorScheme: ColorScheme.fromSwatch(
+            accentColor: Colors.green,
+          ),
+          floatingActionButtonTheme: FloatingActionButtonThemeData(
+            backgroundColor: Color.fromRGBO(86, 204, 242, 1),
+          ),
+        ),
         home: HomeScreen(),
       ),
     );
